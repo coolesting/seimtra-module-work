@@ -1,0 +1,25 @@
+form action="#{request.path}" method="post" id="form"
+	ul.ul
+		
+		li : label = L[:uid]
+		li : input type="text" name="uid" required="required" value="#{@fields[:uid]}"
+		
+		li : label = L[:status]
+		- status = _vars(:task_status)
+		li : select name="status" required="required"
+			- status.each_index do | i |
+				- selected = @fields[:status] == i ? "selected" : ""
+				option selected="#{selected}" value="#{i}" = status[i]
+		
+		li : label = L[:group]
+		- work_groups = _kv(:work_group, :wgid, :name)
+		li : select name="wgid" required="required"
+			- work_groups.each do | k,v |
+				- selected = @fields[:wgid] == k ? "selected" : ""
+				option selected="#{selected}" value="#{k}" = v
+		
+		
+		
+		li : label = L[:content]
+		li : textarea name="content" required="required" = @fields[:content]
+		

@@ -1,0 +1,45 @@
+.task { 
+	clear: both;
+}
+.task li { 
+	padding: 1px;
+}
+.task .clear {
+	border-bottom: 1px solid #595557;
+	padding: 1px;
+}
+.task pre {
+	padding: 0;
+	font-size: 16px;
+	margin-bottom: 5px;
+	width: 100%;
+	word-wrap: break-word; 
+	word-break: break-all;
+}
+.task .task_edit a {
+	text-decoration: none;
+	color: #595557;
+}
+.task .task_bar {
+	float: right;
+	font-size: 14px;
+	color: #595557;
+}
+.task .task_bar li {
+	float: right;
+	font-size: 14px;
+	color: #595557;
+	padding: 5px;
+}
+.task .task_bar_label {
+	cursor: pointer;
+}
+.task .task_edit .task_edit_dpmenu {
+	border: 1px solid #AD7739;
+	position: absolute;
+	background: white;
+	color: black;
+}
+.task .task_edit .task_edit_dpmenu li {
+	float: none;
+}

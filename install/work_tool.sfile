@@ -1,0 +1,9 @@
+type=group
+method_name=new
+name=new group
+description=create a user group
+
+type=group
+method_name=join
+name=join group
+description=join a user group you want

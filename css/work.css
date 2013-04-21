@@ -1,0 +1,155 @@
+/* 
+ * template layout 
+ * 
+ * #wrap
+ * -- #header
+ * -- #main
+ * -- -- #left_bar
+ * -- -- #right_body
+ * -- -- -- .top_menu
+ * -- -- -- .nav
+ * -- -- -- .body
+ * -- #footer
+ *
+ * */
+
+/* all */
+body, #wrap {
+	background: #F2D8BB;
+	padding: 0 10px;
+	margin: 0 auto;
+	width: 800px;
+}
+
+/* header */
+#header .top_menu, #main {
+	padding: 5px 10px;
+	margin-bottom: 6px;
+}
+
+#header h1 {
+	font-size: 40px;
+	margin: 5px 0;
+}
+
+#header .top_menu {
+	height: 20px;
+	margin: 5px 0;
+	background: #AD7739;
+}
+#header .top_menu a {
+	font-weight: 900;
+	text-decoration: none;
+	padding: 7px 10px;
+}
+#header .top_menu a:link { color: #000; }
+#header .top_menu a:visited { color: #000; }
+#header .top_menu a:hover {
+	color: #000;
+	background-color: #E3BD91;
+}
+
+#header .top_menu li { 
+	float: left;
+}
+.focus1 {
+	background-color: #E3BD91;
+}
+
+/* left_bar */
+#left_bar {
+	width: 80px;
+	float: left;
+}
+#right_body {
+	width: 690px;
+	padding: 5px;
+	float: left;
+}
+#left_bar li {
+	padding: 2px;
+}
+#left_bar a {
+	margin: 3px;
+	padding: 3px;
+	text-decoration: none;
+}
+#left_bar a:link { color: #000; }
+#left_bar a:visited { color: #000; }
+#left_bar a:hover { text-decoration: underline; }
+.focus2 {
+	text-decoration: display;
+	font-weight: 700;
+}
+#left_bar .title {
+}
+#left_bar .body {
+}
+
+/* right_body */
+#right_body .top_menu {
+	width: 690px;
+	float: left;
+	margin-bottom: 5px;
+}
+#right_body .top_menu ul {
+	float: right;
+}
+#right_body .top_menu li {
+	float: left;
+}
+#right_body .top_menu a {
+	margin: 3px;
+	padding: 2px;
+	text-decoration: none;
+}
+#right_body .top_menu a:link { color: #000; }
+#right_body .top_menu a:visited { color: #000; }
+#right_body .top_menu a:hover { text-decoration: underline; }
+.focus3 {
+	text-decoration: display;
+	font-weight: 700;
+	border: 1px solid #9C867B;
+}
+#right_body .button { width: 90px; height: 25px; }
+
+#right_body .list {
+	padding: 3px;
+}
+#right_body .list .title {
+	width: 700px;
+}
+#right_body .list .time {
+	width: 200px;
+}
+#right_body .list .user {
+	text-align: center;
+	width: 100px;
+}
+
+#right_body .nav {
+	padding: 5px 0;
+}
+#right_body .nav label {
+	font-size: 20px;
+}
+
+#right_body .body {
+	padding: 2px;
+	margin: 5px 0;
+	border: 1px solid #9C8F8F;
+}
+#right_body .body label {
+	padding: 2px;
+	color: #463D3D;
+}
+#right_body .body li {
+	padding: 3px;
+}
+
+#right_body .table td {
+	padding: 2px 5px;
+	text-align: center;
+}
+#right_body .table th {
+}

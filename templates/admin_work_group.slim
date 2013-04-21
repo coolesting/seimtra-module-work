@@ -1,0 +1,24 @@
+table.table
+	thead
+		th : a href="#{_url('/admin/work_group', :order => 'wgid')}" = L[:wgid]
+		th : a href="#{_url('/admin/work_group', :order => 'name')}" = L[:name]
+		th : a href="#{_url('/admin/work_group', :order => 'description')}" = L[:description]
+		th : a href="#{_url('/admin/work_group', :order => 'uid')}" = L[:uid]
+		th
+	tbody
+		- @work_group.each do | row |
+			tr
+				td = row[:wgid]
+				td = row[:name]
+				td = row[:description]
+				td = row[:uid]
+
+				td
+					span.edit : a href="/admin/work_group/edit/#{row[:wgid]}" = L[:fix]
+					span.delete : a href="/admin/work_group/rm/#{row[:wgid]}" = L[:del]
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url('/admin/work_group', :page_curr => i)}" = i

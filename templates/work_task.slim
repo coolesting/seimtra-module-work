@@ -1,0 +1,58 @@
+div
+	.top_menu
+		a href="#{_url('/work/task/edit', nil)}"
+			button.button = L[:create]
+
+		- task_status = _vars(:task_status)
+		- unless task_status.empty?
+			ul#task_state
+				- status = @qs[:status].to_i
+				- task_status.each_index do | i |
+					li : span
+						- focus3 = status == i ? "focus3" : ""
+						a class="#{focus3}" href="#{_url(request.path, :status => i)}" = task_status[i]
+				- @qs[:status] = status
+
+
+	- if @task
+		ul.task
+			- @task.each do | row |
+				li
+					pre.task_content == _m2h(row[:content])
+					ul.task_bar
+						li.task_edit
+							div.task_bar_label
+								a href="#{_url('/work/task/edit', :wtid => row[:wtid])}"
+									img src="/icons/edit.png"
+							ul.task_edit_dpmenu.hide
+								- status = _vars(:task_status)
+								- status.each_index do | i |
+									- if i != row[:status]
+										li : a href="#{_url('/work/edit/status/' + i.to_s, :wtid => row[:wtid])}" = status[i]
+						li = row[:created].strftime("%Y-%m-%d, %H:%M:%S")
+					div.clear
+
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url(request.path, :page_curr => i)}" = i
+
+
+link rel='stylesheet' type='text/css' href='#{_asset("/_assets/work/css/task.css")}'
+
+javascript:
+
+	$(".task_edit").hover(function(){
+		$(this).find('.task_edit_dpmenu').show();
+	}, function(){
+		$(this).find('.task_edit_dpmenu').hide();
+	});
+
+	$(".task_edit_dpmenu li").hover(function(){
+		$(this).css('background', '#F1D4B3');
+	}, function(){
+		$(this).css('background', '');
+	});
+

@@ -1,0 +1,26 @@
+table.table
+	thead
+		th : a href="#{_url('/admin/work_tool', :order => 'wtid')}" = L[:wtid]
+		th : a href="#{_url('/admin/work_tool', :order => 'type')}" = L[:type]
+		th : a href="#{_url('/admin/work_tool', :order => 'method_name')}" = L[:method_name]
+		th : a href="#{_url('/admin/work_tool', :order => 'name')}" = L[:name]
+		th : a href="#{_url('/admin/work_tool', :order => 'description')}" = L[:description]
+		th
+	tbody
+		- @work_tool.each do | row |
+			tr
+				td = row[:wtid]
+				td = row[:type]
+				td = row[:method_name]
+				td = row[:name]
+				td = row[:description]
+
+				td
+					span.edit : a href="/admin/work_tool/edit/#{row[:wtid]}" = L[:fix]
+					span.delete : a href="/admin/work_tool/rm/#{row[:wtid]}" = L[:del]
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url('/admin/work_tool', :page_curr => i)}" = i

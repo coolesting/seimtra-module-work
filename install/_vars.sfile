@@ -1,0 +1,15 @@
+skey=task_status
+sval=active,closed,cancel
+tag=task
+
+skey=work_tool_type
+sval=group,user
+tag=work
+
+skey=work_group_user_rule
+sval=unvalid,common,admin
+tag=work
+
+skey=work_website_title
+sval=c l o w k
+tag=work

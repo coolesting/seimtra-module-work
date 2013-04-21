@@ -1,0 +1,12 @@
+div
+	table
+		th = L[:number]
+		th = L[:name]
+		th = L[:description]
+		- @res.each do | row |
+			tr
+				td = row[:wtid]
+				td = row[:name]
+				td = row[:description]
+				td
+					a href='#{_url("/work/help/tool/" + row[:type] + "/" + row[:method_name])}' use

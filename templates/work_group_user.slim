@@ -1,0 +1,26 @@
+- unless @res.empty?
+	- users = _kv(:_user, :uid, :name)
+	- rules = _vars(:work_group_user_rule)
+	form action="#{_url('/work/home/group/set_user/' + @wgid)}" method="post"
+		table.table
+			thead
+				th = L[:name]
+				th = L[:rule]
+				th
+			tbody
+				- @res.each do | row |
+					tr
+						td = users[row[:uid]]
+						td = rules[row[:rule]]
+						td : input type='checkbox' name='wguid[]' value="#{row[:wguid]}"
+
+		- if work_is_group_admin(@wgid)
+			select name='opt'
+				option value='remove' = L[:remove]
+				option value='common' = L[:common]
+				option value='admin' = L[:admin]
+				option value='unvalid' = L[:unvalid]
+
+			input type='submit' value="#{L[:execute]}"
+
+		a href="/work/home/group/list" : input type="button" value="#{L[:return]}"

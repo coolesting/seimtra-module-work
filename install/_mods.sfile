@@ -1,0 +1,10 @@
+order=9
+status=1
+name=work
+email=coolesting@gmail.com
+author=linyu den coolesting
+created=2012-11-19 17:28:52 -0800
+version=0.0.1
+type=common
+dependon=
+description=a office application module

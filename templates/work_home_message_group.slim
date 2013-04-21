@@ -1,0 +1,18 @@
+- unless @res.empty?
+	form action="#{_url('/work/home/message/set')}" method="post"
+		table.table
+			- @res.each do | row |
+				tr
+					td
+						p = row[:created]
+						p = row[:content]
+					td : input type='checkbox' name='nids[]' value="#{row[:nid]}"
+
+		select name="opt"
+			option value="remove" = L[:remove]
+
+		input type="submit" value="#{L[:execute]}"
+
+		a href="#{_url('/work/home/message/cleanall')}"
+			input type="button" value="#{L[:cleanall]}"
+

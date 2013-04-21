@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		title = @title
+		script src="#{_asset('/js/jquery-172.js')}" type="text/javascript"
+		link rel='stylesheet' type='text/css' href='#{_asset("/css/style.css")}'
+		link rel='stylesheet' type='text/css' href='#{_asset("/_assets/work/css/work.css")}'
+	body
+		#wrap
+			#header
+				h1 == _vars(:work_website_title)
+
+				.top_menu.clear
+					- if @work_menu
+						ul
+							- request_path = _match_path(request.path, @work_menu.values) 
+							- @work_menu.each do | name, link |
+								- focus1 = link == request_path ? "focus1" : ""
+								li : span
+									a class="#{focus1}" href="#{link}" = L[name]
+
+				== _inc(:_message)
+
+			#main == yield
+
+			#footer.clear

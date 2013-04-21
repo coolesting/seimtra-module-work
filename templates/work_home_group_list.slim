@@ -1,0 +1,20 @@
+- unless @res.empty?
+	- work_groups = _kv(:work_group, :wgid, :name)
+	form action="#{_url('/work/home/group/set')}" method="post"
+		table.table
+			thead
+				th.group_id = L[:'group id']
+				th.group_name = L[:'group name']
+				th
+			tbody
+				- @res.each do | id |
+					tr
+						td = id
+						td
+							a href="/work/home/group/list/#{id}" = work_groups[id]
+						td
+							input type="checkbox" name="wgid[]" value="#{id}"
+
+		select name="opt"
+			option value="quit" = L[:quit]
+		input type="submit" value="#{L[:execute]}"

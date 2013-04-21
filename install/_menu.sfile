@@ -1,0 +1,30 @@
+## backgroup menu
+name=work
+type=admin
+link=/admin/work
+description=a office workstation
+
+name=group
+menu_name=work
+type=admin
+link=/admin/work_group
+description=the work group
+
+name=task
+menu_name=work
+type=admin
+link=/admin/work_task
+description=the work task
+
+name=group user
+menu_name=work
+type=admin
+link=/admin/work_group_user
+description=the user of group
+
+name=tool
+menu_name=work
+type=admin
+link=/admin/work_tool
+description=the tools of workstation
+

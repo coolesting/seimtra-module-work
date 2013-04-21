@@ -1,0 +1,11 @@
+form action="#{request.path}" method="post" id="form"
+	ul.ul
+		
+		li : label = L[:uid]
+		li : input type="text" name="uid" required="required" value="#{@fields[:uid]}"
+		
+		li : label = L[:wgid]
+		li : input type="number" name="wgid" required="required" value="#{@fields[:wgid]}" min="0" max="99999"
+		
+		li : label = L[:rule]
+		li : input type="number" name="rule" required="required" value="#{@fields[:rule]}" min="0" max="99999"

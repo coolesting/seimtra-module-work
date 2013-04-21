@@ -1,0 +1,6 @@
+div
+	p = L[:'create group']
+	form action='#{request.path}' method='post'
+		p : input type='text' name='name' placeholder="#{L[:name]}"
+		p : textarea name='description' placeholder="#{L[:description]}"
+		p : input type='submit' value='#{L[:done]}'

@@ -1,0 +1,15 @@
+div.leftbar == @res
+- if _user[:uid] < 1
+	div.rightbar == _inc(:_login)
+
+css:
+	#main {
+		padding: 5px 0;
+	}
+	.leftbar {
+		float: left;
+		width: 600px;
+	}
+	.rightbar {
+		float: right;
+	}
