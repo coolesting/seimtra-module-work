@@ -5,8 +5,11 @@ form action="#{request.path}" method="post" id="form"
 		li : input type="text" name="name" required="required" value="#{@fields[:name]}"
 		
 		li : label = L[:description]
-		li : input type="text" name="description" required="required" value="#{@fields[:description]}"
+		li : input type="text" name="description" value="#{@fields[:description]}"
+
+		li : label = L[:wgtid]
+		li : input type="number" name="wgtid" value="#{@fields[:wgtid]}" min="1" max="99999"
 		
 		li : label = L[:uid]
-		li : input type="number" name="uid" required="required" value="#{@fields[:uid]}" min="1" max="99999"
+		li : input type="number" name="uid" value="#{@fields[:uid]}" min="1" max="99999"
 		

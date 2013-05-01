@@ -3,6 +3,7 @@ table.table
 		th : a href="#{_url('/admin/work_group', :order => 'wgid')}" = L[:wgid]
 		th : a href="#{_url('/admin/work_group', :order => 'name')}" = L[:name]
 		th : a href="#{_url('/admin/work_group', :order => 'description')}" = L[:description]
+		th : a href="#{_url('/admin/work_group', :order => 'wgtid')}" = L[:wgtid]
 		th : a href="#{_url('/admin/work_group', :order => 'uid')}" = L[:uid]
 		th
 	tbody
@@ -11,6 +12,7 @@ table.table
 				td = row[:wgid]
 				td = row[:name]
 				td = row[:description]
+				td = row[:wgtid]
 				td = row[:uid]
 
 				td

@@ -10,21 +10,26 @@ type=admin
 link=/admin/work_group
 description=the work group
 
-name=task
-menu_name=work
-type=admin
-link=/admin/work_task
-description=the work task
-
 name=group user
 menu_name=work
 type=admin
 link=/admin/work_group_user
 description=the user of group
 
+name=group type
+menu_name=work
+type=admin
+link=/admin/work_group_type
+description=group type
+
+name=task
+menu_name=work
+type=admin
+link=/admin/work_task
+description=the work task
+
 name=tool
 menu_name=work
 type=admin
 link=/admin/work_tool
 description=the tools of workstation
-

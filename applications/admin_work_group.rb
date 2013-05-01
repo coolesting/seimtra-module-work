@@ -9,7 +9,7 @@ get '/admin/work_group' do
 
 	#search condition
 	if @rightbar.include? :search
-		@search = {:wgid => 'wgid', :name => 'name', :description => 'description', :uid => 'uid', }
+		@search = {:wgid => 'wgid', :name => 'name', :description => 'description', :uid => 'uid', :wgtid => 'wgtid' }
 	end
 
 	#order
@@ -90,6 +90,7 @@ helpers do
 		default_values = {
 			:name		=> '',
 			:description=> '',
+			:wgtid		=> 1,
 			:uid		=> _user[:uid]
 		}
 
@@ -104,9 +105,6 @@ helpers do
 	def work_group_valid_fields
 		
 		_throw "The name field cannot be empty." if @fields[:name].strip.size < 1
-		
-		_throw "The description field cannot be empty." if @fields[:description].strip.size < 1
-		
 		#_throw "The uid field cannot be empty." if @fields[:uid] != 0
 		
 	end

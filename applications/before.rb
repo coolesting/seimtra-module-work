@@ -45,7 +45,7 @@ end
 before '/work/help*' do
 
 	@left_menu = {
-		:docs	=> {
+		:document	=> {
 			:faq	=> '/work/help/docs/post/4',
 		},
 		:tool => {}
@@ -57,11 +57,5 @@ before '/work/help*' do
 end
 
 before '/work/task*' do
-
-	@left_menu[:group] = {}
-	work_groups = _kv(:work_group, :wgid, :name)
-	work_group_user.each do | id |
-		@left_menu[:group][work_groups[id].to_sym] = "/work/task/view/#{id.to_s}"
-	end
-
+	@left_menu = work_group_by_type
 end
