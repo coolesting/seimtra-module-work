@@ -31,3 +31,5 @@ cleanall=cleanall
 support=support
 document=document
 tool=tool
+base=base
+advanced=advanced

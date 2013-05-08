@@ -22,23 +22,22 @@ end
 before '/work/home*' do
 
 	@left_menu = {
-		:settings	=> {
+		:base => {
 			#:info	=> '/work/home/settings/info',
 			#:contact=> '/work/home/settings/contact',
 			#:secure	=> '/work/home/settings/secure',
 			:group	=> '/work/home/group/list',
 			:messages => '/work/home/message/group',
 		},
+		:advanced => {}
 # 		:messages	=> {
 # 			:group	=> '/work/home/message/group',
 # 			:user	=> '/work/home/message/user',
 # 		},
-		:support	=> {
-			:suggestion => '/work/home/support/post/1',
-			:report	=> '/work/home/support/post/2',
-			:decision	=> '/work/home/support/post/3',
-		}
 	}
+	_vars(:work_tool_type).each do | a |
+		@left_menu[:advanced][a.to_sym] = '/work/home/tool/' + a
+	end
 
 end
 
@@ -48,11 +47,12 @@ before '/work/help*' do
 		:document	=> {
 			:faq	=> '/work/help/docs/post/4',
 		},
-		:tool => {}
+		:support	=> {
+			:suggestion => '/work/help/support/post/1',
+			:report	=> '/work/help/support/post/2',
+			:decision	=> '/work/help/support/post/3',
+		}
 	}
-	_vars(:work_tool_type).each do | a |
-		@left_menu[:tool][a.to_sym] = '/work/help/tool/' + a
-	end
 
 end
 

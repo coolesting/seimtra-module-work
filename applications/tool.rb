@@ -1,14 +1,14 @@
-get '/work/help/tool/:type' do
+get '/work/home/tool/:type' do
 	@res = DB[:work_tool].filter(:type => params[:type]).all
 	_tpl :work_tool
 end
 
 #new a group
-get '/work/help/tool/group/new' do
+get '/work/home/tool/group/new' do
 	_tpl :work_tool_group_new
 end
 
-post '/work/help/tool/group/new' do
+post '/work/home/tool/group/new' do
 	work_group_set_fields
 	work_group_valid_fields
 	#new gourp
@@ -20,11 +20,11 @@ post '/work/help/tool/group/new' do
 end
 
 #join a group by id
-get '/work/help/tool/group/join' do
+get '/work/home/tool/group/join' do
 	_tpl :work_tool_group_join
 end
 
-post '/work/help/tool/group/join' do
+post '/work/home/tool/group/join' do
 	#the user is whether in this group
 	if DB[:work_group_user].filter(:uid => _user[:uid], :wgid => params[:wgid]).get(:wguid)
 		_throw L[:'you have been join in this group']
@@ -40,9 +40,9 @@ post '/work/help/tool/group/join' do
 	
 	#add the user to group
 	DB[:work_group_user].insert(:uid => _user[:uid], :wgid => params[:wgid], :rule => 0)
-	redirect "/work/help/tool/group"
+	redirect "/work/home/tool/group"
 end
 
-before '/work/help/tool/*' do
+before '/work/home/tool/*' do
 	#puts params[:splat]
 end

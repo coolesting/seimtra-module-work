@@ -1,15 +1,15 @@
-get '/work/home/support/post/:ctid' do
+get '/work/help/support/post/:ctid' do
 	cms_get_list params[:ctid]
 end
 
-get '/work/home/support/post/:ctid/:cpid' do
+get '/work/help/support/post/:ctid/:cpid' do
 	cms_get_post params[:cpid]
 end
 
-get '/work/home/support/form' do
+get '/work/help/support/form' do
 	cms_form
 end
 
-before '/work/home/support*' do
-	@cms_route_path = '/work/home/support'
+before '/work/help/support*' do
+	@cms_route_path = '/work/help/support'
 end
