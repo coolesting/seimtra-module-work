@@ -1,0 +1,23 @@
+.task_menu
+	ul
+		- toweek = @qs[:w]
+		- 5.times do | i |
+			- i = i + 1
+			li
+				a href="#{_url('/work/task/week', :w => i)}" #{i} w
+		- @qs[:w] = toweek
+
+.task_week
+	ul
+		- @res.each do | k, v |
+			li = v
+
+css:
+	.task_week li {
+		float:left;
+		padding: 5px;
+		margin: 3px;
+		height: 130px;
+		width: 93px;
+		border: 1px solid #816F53;
+	}

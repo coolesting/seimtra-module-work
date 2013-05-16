@@ -1,5 +1,4 @@
-p
-	label #{L[:'hi']}, #{_user[:name]}. 
-	label
-		a href="/_logout" = L[:logout]
-
+.panel
+	- if @res
+		- @res.each do | row |
+			.article = row[:content]

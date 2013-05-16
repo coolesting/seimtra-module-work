@@ -13,3 +13,8 @@ tag=work
 skey=work_website_title
 sval=c l o w k
 tag=work
+
+skey=work_task_datetime_type
+sval=day,month,year,hour
+tag=work
+

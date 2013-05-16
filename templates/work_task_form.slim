@@ -4,26 +4,33 @@
 		= redirect '/'
 	form action="#{_url(request.path, @qs)}" method="post"
 		ul
+			li : textarea.width100.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
+
+			- work_groups = _kv(:work_group, :wgid, :name)
+			li : label = L[:'work group']
+			li : select name="wgid"
+				- work_group_users.each do | id |
+					- if @fields[:wgid] == id
+						option selected="selected" value="#{id}" #{work_groups[id]}
+					- else
+						option value="#{id}" #{work_groups[id]}
+
+			- status = _vars(:task_status)
+			li : label = L[:'work status']
+			li : select name="status"
+				- status.each_index do | i |
+					- if @fields[:status] == i
+						option selected="selected" value="#{i}" = status[i]
+					- else
+						option value="#{i}" = status[i]
+
+			li : label = L[:startime]
+			li : input type='text' name='startime' value="#{@fields[:startime]}"
+
 			li
 				input.button type="submit" value="#{L[:done]}"
 				- if @qs.include?(:wtid)
 					input type="hidden" name="wtid" value="#{@qs[:wtid]}"
-
-			li : textarea.width100.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
-
-			li : label = L[:'work group']
-			- work_groups = _kv(:work_group, :wgid, :name)
-			li : select name="wgid"
-				- work_group_users.each do | id |
-					- selected = @fields[:wgid] == id ? "selected" : ""
-					option selected="#{selected}" value="#{id}" = work_groups[id]
-
-			li : label = L[:'work status']
-			- status = _vars(:task_status)
-			li : select name="status"
-				- status.each_index do | i |
-					- selected = @fields[:status] == i ? "selected" : ""
-					option selected="#{selected}" value="#{i}" = status[i]
 
 == _inc(:_editor)
 == _inc(:_select)

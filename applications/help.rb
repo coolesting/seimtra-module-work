@@ -17,3 +17,4 @@ end
 before '/work/help/docs*' do
 	@cms_route_path = '/work/help/docs'
 end
+

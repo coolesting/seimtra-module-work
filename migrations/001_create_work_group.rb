@@ -5,6 +5,7 @@ Sequel.migration do
 			String :name
 			String :description
 			Integer :uid
+			Integer :wgtid, :default => 1
 			Integer :level, :default => 1
 		end
 	end

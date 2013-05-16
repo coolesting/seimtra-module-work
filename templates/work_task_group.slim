@@ -1,0 +1,58 @@
+.task_menu
+	ul
+		- work_groups = _kv(:work_group, :wgid, :name)
+		- @task_group.each do | id |
+			li : a href="#{_url2('/work/task/group', :wgid => id)}" = work_groups[id]
+
+		li
+			| |
+		- task_status = _vars(:task_status)
+		- unless task_status.empty?
+			- task_status.each_index do | i |
+				li : span
+					- focus3 = status == i ? "focus3" : ""
+					a class="#{focus3}" href="#{_url2(request.path, :status => i)}" = task_status[i]
+
+
+.task
+	- if @task
+		- users = _kv(:_user, :uid, :name)
+		- @task.each do | row |
+			.body
+				ul.task_bar
+					li #{row[:created].strftime("%Y-%m-%d, %H:%M:%S")}
+					li #{users[row[:uid]]}
+					li.task_edit
+						div.task_bar_label
+							a href="#{_url2('/work/task/edit', :wtid => row[:wtid])}"
+								img src="/icons/edit.png"
+						ul.task_edit_dpmenu.hide
+							- status = _vars(:task_status)
+							- status.each_index do | i |
+								- if i != row[:status]
+									li : a href="#{_url('/work/edit/status/' + i.to_s, :wtid => row[:wtid])}" = status[i]
+
+				pre.article == _m2h(row[:content])
+				.clear
+
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url(request.path, :page_curr => i)}" = i
+
+javascript:
+
+	$(".task_edit").hover(function(){
+		$(this).find('.task_edit_dpmenu').show();
+	}, function(){
+		$(this).find('.task_edit_dpmenu').hide();
+	});
+
+	$(".task_edit_dpmenu li").hover(function(){
+		$(this).css('background', '#F1D4B3');
+	}, function(){
+		$(this).css('background', '');
+	});
+

@@ -17,9 +17,13 @@ form action="#{request.path}" method="post" id="form"
 			- work_groups.each do | k,v |
 				- selected = @fields[:wgid] == k ? "selected" : ""
 				option selected="#{selected}" value="#{k}" = v
-		
-		
-		
+
+		li : label = L[:startime]
+		li : input type="text" name="startime" value="#{@fields[:startime]}"
+
+		li : label = L[:'datetime type']
+		li : input type="text" name="dtype" value="#{@fields[:dtype]}"
+
 		li : label = L[:content]
 		li : textarea name="content" required="required" = @fields[:content]
 		

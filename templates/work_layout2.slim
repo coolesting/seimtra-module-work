@@ -22,20 +22,6 @@ html
 				== _inc(:_message)
 
 			#bodyer
-				#left_bar
-					ul
-						- @left_menu.each do | title, menu |
-							li.title
-								span = L[title]
-							li.body
-								ul
-									- if menu
-										- request_path = _match_path(request.path, menu.values)
-										- menu.each do | name, link |
-											- focus2 = link == request_path ? "focus2" : ""
-											li : span
-												a class="#{focus2}" href="#{link}" = L[name]
-
-				#right_body == yield
+				#main == yield
 
 			#footer.clear

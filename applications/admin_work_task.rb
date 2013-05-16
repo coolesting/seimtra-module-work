@@ -9,7 +9,7 @@ get '/admin/work_task' do
 
 	#search condition
 	if @rightbar.include? :search
-		@search = {:wtid => 'wtid', :uid => 'uid', :status => 'status', :wgid => 'name', :created => 'created', :changed => 'changed', :content => 'content', }
+		@search = {:wtid => 'wtid', :uid => 'uid', :status => 'status', :wgid => 'name', :created => 'created', :changed => 'changed', :dtype => 'dtype', :startime => 'startime', :content => 'content', }
 	end
 
 	#order
@@ -47,6 +47,7 @@ post '/admin/work_task/new' do
 	work_task_valid_fields
 	@fields[:created] = Time.now
 	@fields[:changed] = Time.now
+	@fields[:startime] = Time.now.to_i
 	DB[:work_task].insert(@fields)
 	redirect "/admin/work_task"
 
@@ -92,6 +93,8 @@ helpers do
 			:uid		=> _user[:uid],
 			:status		=> 0,
 			:wgid		=> 1,
+			:dtype		=> 0,
+			:startime	=> Time.now.to_i,
 			:content	=> ''
 		}
 

@@ -1,20 +1,31 @@
+.task_menu {
+	height: 30px;
+	clear: both;
+}
+.task_menu li {
+	float:left;
+	margin-bottom: 10px;
+	padding-right: 20px;
+}
+.task_menu a {
+	text-decoration: none;
+	color: black;
+}
+
 .task { 
 	clear: both;
 }
-.task li { 
-	padding: 1px;
+.task .body { 
+	padding: 10px 0;
+	height: 200px;
+	border-bottom: 1px solid #595557;
 }
 .task .clear {
-	border-bottom: 1px solid #595557;
 	padding: 1px;
 }
 .task pre {
 	padding: 0;
-	font-size: 16px;
-	margin-bottom: 5px;
-	width: 100%;
-	word-wrap: break-word; 
-	word-break: break-all;
+	margin: 0;
 }
 .task .task_edit a {
 	text-decoration: none;
@@ -26,7 +37,6 @@
 	color: #595557;
 }
 .task .task_bar li {
-	float: right;
 	font-size: 14px;
 	color: #595557;
 	padding: 5px;

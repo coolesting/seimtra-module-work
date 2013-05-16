@@ -1,0 +1,30 @@
+.task_menu
+	ul
+		- 12.times do | i |
+			li
+				- i = i + 1
+				- if i == @qs[:m].to_i
+					a class="focus2" href="#{_url('/work/task/month', :m => i)}" #{i} m
+				- else
+					a href="#{_url('/work/task/month', :m => i)}" #{i} m
+
+.task_day
+	- @days.each do | k, v |
+		- if k % 7 == 0
+			.clear
+		- focus = v == Time.now.day.to_s ? 'focus_day' : ''
+		.day class="#{focus}"
+			a href="#{_url2('/work/task/edit', :d => v, :dtype => 1)}" #{v}
+
+css:
+	.task_day .day {
+		float:left;
+		padding: 5px;
+		margin: 3px;
+		height: 60px;
+		width: 92px;
+		border: 1px solid #816F53;
+	}
+	.task_day .focus_day {
+		background-color: #E6BF81;
+	}

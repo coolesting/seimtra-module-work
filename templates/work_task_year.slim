@@ -1,0 +1,20 @@
+.task_menu
+	ul
+		- @years.each do | y |
+			li : a href="#{_url('/work/task/year', :y => y)}" = y
+
+.task_month
+	ul
+		- @res.each do | k, v |
+			a href=""
+				li = v
+
+css:
+	.task_month li {
+		float:left;
+		padding: 5px;
+		margin: 3px;
+		height: 60px;
+		width: 47px;
+		border: 1px solid #816F53;
+	}

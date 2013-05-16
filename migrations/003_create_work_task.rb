@@ -5,9 +5,10 @@ Sequel.migration do
 			Integer :uid
 			Integer :status
 			Integer :wgid
+			Integer :dtype
+			Integer :startime, :size => 10
 			Datetime :created
 			Datetime :changed
-			String :username
 			Text :content
 		end
 	end

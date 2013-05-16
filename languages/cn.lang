@@ -33,3 +33,5 @@ document=文档
 tool=工具
 base=基本
 advanced=高级
+startime=开始时间
+datetime type=时间类型

@@ -4,8 +4,10 @@ table.table
 		th : a href="#{_url('/admin/work_task', :order => 'uid')}" = L[:uid]
 		th : a href="#{_url('/admin/work_task', :order => 'status')}" = L[:status]
 		th : a href="#{_url('/admin/work_task', :order => 'wgid')}" = L[:name]
-		th : a href="#{_url('/admin/work_task', :order => 'created')}" = L[:created]
+		th : a href="#{_url('/admin/work_task', :order => 'dtype')}" = L[:dtype]
+		th : a href="#{_url('/admin/work_task', :order => 'startime')}" = L[:startime]
 		th : a href="#{_url('/admin/work_task', :order => 'changed')}" = L[:changed]
+		th : a href="#{_url('/admin/work_task', :order => 'startime')}" = L[:startime]
 		th : a href="#{_url('/admin/work_task', :order => 'content')}" = L[:content]
 		th
 	tbody
@@ -15,11 +17,12 @@ table.table
 				td = row[:wtid]
 				td = row[:uid]
 				td = row[:status]
+				td = row[:dtype]
 				td = work_groups[row[:wgid]]
 				td = row[:created]
 				td = row[:changed]
+				td = row[:startime]
 				td = row[:content]
-
 				td
 					span.edit : a href="/admin/work_task/edit/#{row[:wtid]}" = L[:fix]
 					span.delete : a href="/admin/work_task/rm/#{row[:wtid]}" = L[:del]
