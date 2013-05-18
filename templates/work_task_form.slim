@@ -25,7 +25,16 @@
 						option value="#{i}" = status[i]
 
 			li : label = L[:startime]
-			li : input type='text' name='startime' value="#{@fields[:startime]}"
+			li : input type='text' name='startime' value="#{Time.at(@fields[:startime])}"
+
+			- plantype = _vars(:work_task_datetime_type)
+			li : label = L[:'plan type']
+			li : select name="dtype"
+				- plantype.each_index do | i |
+					- if @fields[:dtype] == i
+						option selected="selected" value="#{i}" = plantype[i]
+					- else
+						option value="#{i}" = plantype[i]
 
 			li
 				input.button type="submit" value="#{L[:done]}"

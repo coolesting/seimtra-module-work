@@ -1,0 +1,24 @@
+div
+	p = L[:'merge group']
+	- group_ids = work_group_user
+	- group_names = _kv(:work_group, :wgid, :name)
+	form action='#{request.path}' method='post'
+		table.table
+			thead
+				th.group_id = L[:'group id']
+				th.group_name = L[:'group name']
+				th
+			tbody
+				- group_ids.each do | id |
+					tr
+						td = id
+						td = group_names[id]
+						td : input type="checkbox" name="from_group[]" value="#{id}"
+
+		p = L['merge the group your choice to']
+
+		select name="to_group"
+			- group_ids.each do | id |
+				option value="#{id}" = group_names[id]
+
+		input type="submit" value="#{L[:merge]}"

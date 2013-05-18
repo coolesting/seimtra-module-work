@@ -35,3 +35,7 @@ base=base
 advanced=advanced
 startime=startime
 datetime type=datetime type
+plan type=plan type
+merge=merge
+merge group=merge group
+merge the group your choice to=merge the group your choice to

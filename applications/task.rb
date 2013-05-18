@@ -13,6 +13,7 @@ post '/work/task/edit' do
 
 	route_path = '/work/task/group'
 	if params[:wtid]
+		@fields[:startime] = @fields[:startime].to_i @fields.include? :startime
 		DB[:work_task].filter(:wtid => params[:wtid]).update(@fields)
 		redirect _url(route_path, @qs)
 	else

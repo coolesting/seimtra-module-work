@@ -7,3 +7,8 @@ type=group
 method_name=join
 name=join group
 description=join a user group you want
+
+type=group
+method_name=merge
+name=merge group
+description=merge user group

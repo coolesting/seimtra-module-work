@@ -43,6 +43,54 @@ post '/work/home/tool/group/join' do
 	redirect "/work/home/tool/group"
 end
 
+#merge user groups
+get '/work/home/tool/group/merge' do
+	_tpl :work_tool_group_merge
+end
+
+post '/work/home/tool/group/merge' do
+	#is the admin of the group
+	if params[:from_group] and params[:to_group]
+		duplicate_record = []
+		params[:from_group].delete(params[:to_group])
+
+		params[:from_group].each do | id |
+			if work_is_group_admin(id)
+				#update the task table
+				DB[:work_task].filter(:wgid => id).update(:wgid => params[:to_group])
+
+				#update the group user
+				DB[:work_group_user].filter(:wgid => id).update(:wgid => params[:to_group])
+				
+				#get the duplicate user
+				togroup_user = []
+				DB[:work_group_user].filter(:wgid => params[:to_group]).each do | row |
+					unless togroup_user.include?(row[:uid])
+						togroup_user << row[:uid] 
+					else
+						duplicate_record << row[:wguid]
+					end
+				end
+			end
+		end
+
+		#remove the duplicate record
+		DB[:work_group_user].where(:wguid => duplicate_record).delete
+
+	end
+
+	#sent message to the group owner
+# 	ds = DB[:work_group].filter(:wgid => params[:wgid])
+#  	group = ds.get(:name)
+#  	to_uid = ds.get(:uid)
+# 	content = "#{_user[:name]} want to join the #{group} group"
+#  	_note_send content, _user[:uid], to_uid, 'work_group'
+# 	_msg L[:'the message of joining group has been sent to group owner']
+	
+	redirect "/work/home/tool/group"
+end
+
 before '/work/home/tool/*' do
 	#puts params[:splat]
 end
+
