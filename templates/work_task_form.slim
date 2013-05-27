@@ -1,53 +1,49 @@
 .work_form
-	- work_group_users = work_group_user
-	- if work_group_users.empty?
-		= redirect '/'
-	form action="#{_url(request.path, @qs)}" method="post"
+	form action="#{_url2('/work/task/edit')}" method="post" id="task_edit_form"
 		ul
-			li : textarea.width100.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
+			li : textarea.width99.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
 
-			- work_groups = _kv(:work_group, :wgid, :name)
-			li : label = L[:'work group']
-			li : select name="wgid"
-				- work_group_users.each do | id |
-					- if @fields[:wgid] == id
-						option selected="selected" value="#{id}" #{work_groups[id]}
-					- else
-						option value="#{id}" #{work_groups[id]}
-
-			- status = _vars(:task_status)
-			li : label = L[:'work status']
-			li : select name="status"
-				- status.each_index do | i |
-					- if @fields[:status] == i
-						option selected="selected" value="#{i}" = status[i]
-					- else
-						option value="#{i}" = status[i]
-
+		ul.more_detail
 			li : label = L[:startime]
 			li : input type='text' name='startime' value="#{Time.at(@fields[:startime])}"
 
 			- plantype = _vars(:work_task_datetime_type)
 			li : label = L[:'plan type']
-			li : select name="dtype"
+			li
 				- plantype.each_index do | i |
 					- if @fields[:dtype] == i
-						option selected="selected" value="#{i}" = plantype[i]
+						input type='radio' checked='checked' name='dtype' value="#{i}" id='dtype_radio_#{i}'
+						label for='dtype_radio_#{i}' = plantype[i]
 					- else
-						option value="#{i}" = plantype[i]
-
-			li
-				input.button type="submit" value="#{L[:done]}"
-				- if @qs.include?(:wtid)
-					input type="hidden" name="wtid" value="#{@qs[:wtid]}"
+						input type='radio' name='dtype' value="#{i}" id='dtype_radio_#{i}'
+						label for='dtype_radio_#{i}' = plantype[i]
 
 == _inc(:_editor)
-== _inc(:_select)
 
 javascript:
 	//$('select').linyu_select()
 
+	$('.more_detail').wrap('<div class="more_wrap"></div>');
+	$('.more_detail').before('<div class="more_title">more options</div>');
+	$('.more_detail').hide();
+	$('.more_wrap').css('margin', '10px 0');
+	$('.more_title').css('padding', '5px 0');
+	$('.more_title').css('cursor', 'pointer');
+
+	$('.more_wrap').hover(function(){
+		$(this).find('.more_title').css('color', 'green');
+	}, function(){
+		$(this).find('.more_title').css('color', '');
+	});
+	
+	$('.more_title').toggle(function(){
+		$(this).next().show();
+	},function(){
+		$(this).next().hide();
+	});
+
+
 css:
-	.work_form li { padding: 5px 0; }
+	.work_form li { padding-bottom: 5px; }
 	.work_form textarea { background: #F2DBBF; }
 

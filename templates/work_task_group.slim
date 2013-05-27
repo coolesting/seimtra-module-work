@@ -1,27 +1,9 @@
-.task_menu
-	ul
-		- work_groups = _kv(:work_group, :wgid, :name)
-		- @task_group.each do | id |
-			- if id == @qs[:wgid].to_i
-				li : a class="focus2" href="#{_url2('/work/task/group', :wgid => id)}" = work_groups[id]
-			- else
-				li : a href="#{_url2('/work/task/group', :wgid => id)}" = work_groups[id]
-
-		li
-			| |
-		- task_status = _vars(:task_status)
-		- unless task_status.empty?
-			- task_status.each_index do | i |
-				li
-					- focus3 = @qs[:status].to_i == i ? "focus2" : ""
-					a class="#{focus3}" href="#{_url2(request.path, :status => i)}" = task_status[i]
-
-
 .task
 	- if @task
 		- users = _kv(:_user, :uid, :name)
 		- @task.each do | row |
 			.body
+
 				ul.task_bar
 					li #{row[:created].strftime("%Y-%m-%d, %H:%M:%S")}
 					li #{users[row[:uid]]}
@@ -35,7 +17,9 @@
 								- if i != row[:status]
 									li : a href="#{_url('/work/edit/status/' + i.to_s, :wtid => row[:wtid])}" = status[i]
 
+				.clear
 				pre.article == _m2h(row[:content])
+
 				.clear
 
 

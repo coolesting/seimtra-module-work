@@ -1,4 +1,9 @@
 type=group
+method_name=list
+name=group list
+description=list all of groups
+
+type=group
 method_name=new
 name=new group
 description=create a user group

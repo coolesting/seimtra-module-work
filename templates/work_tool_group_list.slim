@@ -1,6 +1,6 @@
 - unless @res.empty?
 	- work_groups = _kv(:work_group, :wgid, :name)
-	form action="#{_url('/work/home/group/set')}" method="post"
+	form action="#{_url('/work/help/tool/group/set')}" method="post"
 		table.table
 			thead
 				th.group_id = L[:'group id']
@@ -11,7 +11,7 @@
 					tr
 						td = id
 						td
-							a href="/work/home/group/list/#{id}" = work_groups[id]
+							a href="/work/help/tool/group/list/#{id}" = work_groups[id]
 						td
 							input type="checkbox" name="wgid[]" value="#{id}"
 

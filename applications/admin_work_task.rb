@@ -89,12 +89,16 @@ helpers do
 	#the @fields will be write into database, or display by template to frontground
 	def work_task_set_fields
 		
+		y = @qs.include?(:y) ? @qs[:y] : Time.now.year
+		m = @qs.include?(:m) ? @qs[:m] : Time.now.mon
+		d = @qs.include?(:d) ? @qs[:d] : Time.now.day
+
 		default_values = {
 			:uid		=> _user[:uid],
 			:status		=> 0,
 			:wgid		=> 1,
 			:dtype		=> 0,
-			:startime	=> Time.now.to_i,
+			:startime	=> Time.new(y,m,d).to_i,
 			:content	=> ''
 		}
 

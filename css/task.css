@@ -1,23 +1,24 @@
-.task_menu {
-	height: 30px;
-	clear: both;
+#bodyer .top_menu {
+	margin: 0;
+	padding: 0;
 }
-.task_menu li {
+#bodyer .top_menu li {
 	float:left;
 	margin-bottom: 10px;
-	padding-right: 20px;
+	padding-right: 15px;
 }
-.task_menu a {
+#bodyer .top_menu a {
 	text-decoration: none;
 	color: black;
 }
-
-.task { 
-	clear: both;
+#bodyer .focus5 {
+	background-color: #E6BF81;
 }
+
 .task .body { 
-	padding: 10px 0;
-	height: 200px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	min-height: 200px;
 	border-bottom: 1px solid #595557;
 }
 .task .clear {
@@ -32,11 +33,11 @@
 	color: #595557;
 }
 .task .task_bar {
-	float: right;
 	font-size: 14px;
 	color: #595557;
 }
 .task .task_bar li {
+	float: right;
 	font-size: 14px;
 	color: #595557;
 	padding: 5px;

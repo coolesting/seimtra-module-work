@@ -1,7 +1,7 @@
 - unless @res.empty?
 	- users = _kv(:_user, :uid, :name)
 	- rules = _vars(:work_group_user_rule)
-	form action="#{_url('/work/home/group/set_user/' + @wgid)}" method="post"
+	form action="#{_url('/work/help/tool/group/set_user/' + @wgid)}" method="post"
 		table.table
 			thead
 				th = L[:name]

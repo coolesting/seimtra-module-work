@@ -1,65 +1,69 @@
-#default form for display the task list
+#display the task by multiple forms of view
 get '/work/task' do
-	work_task_group
-end
-
-get '/work/task/group' do
-	work_task_group
-end
-
-get '/work/task/year' do
-	@years = [2013, 2014, 2015]
-	@res = {}
-	m = @qs.include?(:m) ? @qs[:m].to_i : Time.now.mon
-	12.times do | i |
-		i = i + 1
-		@res[i] = i.to_s
-		@res[i] += ' month' if i == m
+	if @qs[:vt] == 'g'
+		work_task_view_group
+	elsif @qs[:vt] == 'y'
+		work_task_view_year
+	elsif @qs[:vt] == 'm'
+		work_task_view_month
+	elsif @qs[:vt] == 'w'
+		work_task_view_week
 	end
-
-	_tpl :work_task_year, :work_task_layout
-end
-
-get '/work/task/month' do
-	@days = {}
-	@qs[:y] = Time.now.year unless @qs.include?(:y)
-	@qs[:m] = Time.now.mon unless @qs.include?(:m)
-	@qs[:d] = Time.now.day unless @qs.include?(:d)
-	newtime = Time.new(@qs[:y].to_i,@qs[:m].to_i,1)
-	wday = newtime.wday - 1
-	mday = newtime.mday
-
-	require 'date'
-	days = Date.new(@qs[:y].to_i,@qs[:m].to_i,-1).day + wday + 1
-
-	35.times do | i |
-		if i > wday and i < days
-			day = i - wday
-			@days[i] = day.to_s
-		else
-			@days[i] = '' 
-		end
-	end
-
-	_tpl :work_task_month, :work_task_layout
-end
-
-get '/work/task/week' do
-	@res = {}
-	w = @qs.include?(:w) ? @qs[:w].to_i : Time.now.wday
-	14.times do | i |
-		i = i + 1
-		@res[i] = i > 7 ? 'night' : 'day'
-		#@res[i] += ' day' if i == w
-	end
-
-	_tpl :work_task_week, :work_task_layout
 end
 
 helpers do
 
-	#display by group
-	def work_task_group
+	#year form
+	def work_task_view_year
+		@res = {}
+		m = @qs.include?(:m) ? @qs[:m].to_i : Time.now.mon
+		12.times do | i |
+			i = i + 1
+			@res[i] = i.to_s
+		end
+
+		_tpl :work_task_year, :work_layout3
+	end
+
+	#month form
+	def work_task_view_month
+		@res = {}
+		@qs[:y] = Time.now.year unless @qs.include?(:y)
+		@qs[:m] = Time.now.mon unless @qs.include?(:m)
+		@qs[:d] = Time.now.day unless @qs.include?(:d)
+		newtime = Time.new(@qs[:y].to_i,@qs[:m].to_i,1)
+		wday = newtime.wday - 1
+		mday = newtime.mday
+
+		require 'date'
+		days = Date.new(@qs[:y].to_i,@qs[:m].to_i,-1).day + wday + 1
+
+		35.times do | i |
+			if i > wday and i < days
+				day = i - wday
+				@res[i] = day.to_s
+			else
+				@res[i] = '' 
+			end
+		end
+
+		_tpl :work_task_month, :work_layout3
+	end
+
+	#week form
+	def  work_task_view_week
+		@res = {}
+		w = @qs.include?(:w) ? @qs[:w].to_i : Time.now.wday
+		7.times do | i |
+			i = i + 1
+			@res[i] = i
+		end
+
+		_tpl :work_task_week, :work_layout3
+	end
+
+	#group form
+	def work_task_view_group
 		condition = {}
 
 		#status
@@ -74,7 +78,7 @@ helpers do
 
 		@task = DB[:work_task].filter(condition).reverse_order(:changed)
 		_parser_init :no_intra_emphasis => true
-		_tpl :work_task_group, :work_task_layout
+		_tpl :work_task_group, :work_layout3
 	end
 
 	def work_get_task_by_user uid = 0

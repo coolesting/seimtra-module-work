@@ -15,6 +15,6 @@ sval=c l o w k
 tag=work
 
 skey=work_task_datetime_type
-sval=day,month,year,hour
+sval=day,week,month,year,hour
 tag=work
 

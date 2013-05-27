@@ -1,8 +1,11 @@
 name=info
+description=info group
 uid=1
 
 name=work
+description=work group
 uid=1
 
 name=seimtra
+description=seimtra group
 uid=1

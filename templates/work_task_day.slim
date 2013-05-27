@@ -1,10 +1,11 @@
-.task_month
-	- @res.each do | k, v |
+.task_day
+	- @days.each do | k, v |
 		- focus = v == Time.now.day.to_s ? 'focus5' : ''
 		.day class="#{focus}"
 			a href="#{_url2('/work/task/edit', :d => v, :dtype => 1)}" #{v}
+
 css:
-	.task_month .day {
+	.task_day .day {
 		float:left;
 		padding: 5px;
 		margin: 3px;

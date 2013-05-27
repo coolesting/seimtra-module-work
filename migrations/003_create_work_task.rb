@@ -6,6 +6,7 @@ Sequel.migration do
 			Integer :status
 			Integer :wgid
 			Integer :dtype
+			Integer :changed_count, :default => 0
 			Integer :comment_count, :default => 0
 			Integer :startime, :size => 10
 			Datetime :created

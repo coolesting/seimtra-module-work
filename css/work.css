@@ -23,7 +23,6 @@ body, #wrap {
 }
 #header .top_menu {
 	background: #AD7739;
-	margin-top: 20px;
 	padding: 10px;
 	height: 18px;
 }
@@ -73,7 +72,7 @@ body, #wrap {
 
 /* left_bar */
 #left_bar {
-	width: 80px;
+	width: 100px;
 	float: left;
 }
 #right_body {
@@ -104,12 +103,7 @@ body, #wrap {
 
 /* right_body */
 #right_body .top_menu {
-	width: 690px;
-	float: left;
-	margin-bottom: 5px;
-}
-#right_body .top_menu ul {
-	float: right;
+	height: 20px;
 }
 #right_body .top_menu li {
 	float: left;
@@ -150,23 +144,6 @@ body, #wrap {
 	font-size: 20px;
 }
 
-#right_body .body {
-	padding: 2px;
-	margin: 5px 0;
-	border: 1px solid #9C8F8F;
-}
-#right_body .body label {
-	padding: 2px;
-	color: #463D3D;
-}
-#right_body .body li {
-	padding: 3px;
-}
-
-#right_body .table td {
-	padding: 2px 5px;
-	text-align: center;
-}
 #right_body .table th {
 }
 
@@ -181,4 +158,5 @@ body, #wrap {
  *
  * */
 
-#main .button { width: 90px; height: 25px; }
+#bodyer .button { width: 90px; height: 25px; }
+#main { margin-top: 20px; }
