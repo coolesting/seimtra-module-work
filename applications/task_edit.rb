@@ -18,7 +18,7 @@ post '/work/task/edit' do
 
 		#if the content is not same, log it
 		unless ds.get(:content) == @fields[:content]
-			_log :work_task, @fields[:content], @fields[:wtid]
+			#_log :work_task, @fields[:content], @fields[:wtid]
 		end
 
 		#update the content

@@ -107,6 +107,5 @@ before '/work/task*' do
 	#set the default value of @qs
 	@qs[:vt] = 'g' unless @qs.include? :vt
 	@qs[:status] = 0 unless @qs.include? :status
-	@qs[:wgid] = 1 unless @qs.include? :wgid
 
 end

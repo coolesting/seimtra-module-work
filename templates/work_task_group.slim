@@ -3,9 +3,8 @@
 		- users = _kv(:_user, :uid, :name)
 		- @task.each do | row |
 			.body
-
 				ul.task_bar
-					li #{row[:created].strftime("%Y-%m-%d, %H:%M:%S")}
+					li #{row[:created].strftime("%m-%d, %H:%M")}
 					li #{users[row[:uid]]}
 					li.task_edit
 						div.task_bar_label
@@ -17,11 +16,7 @@
 								- if i != row[:status]
 									li : a href="#{_url('/work/edit/status/' + i.to_s, :wtid => row[:wtid])}" = status[i]
 
-				.clear
 				pre.article == _m2h(row[:content])
-
-				.clear
-
 
 - if @page_count > 1
 	p.page_bar

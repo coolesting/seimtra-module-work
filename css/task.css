@@ -16,8 +16,7 @@
 }
 
 .task .body { 
-	padding-bottom: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	min-height: 200px;
 	border-bottom: 1px solid #595557;
 }
@@ -33,11 +32,11 @@
 	color: #595557;
 }
 .task .task_bar {
+	float: right;
 	font-size: 14px;
 	color: #595557;
 }
 .task .task_bar li {
-	float: right;
 	font-size: 14px;
 	color: #595557;
 	padding: 5px;

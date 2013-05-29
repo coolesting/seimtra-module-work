@@ -31,8 +31,8 @@ html
 								ul
 									- if menu
 										- menu.each do | name, id |
-											- focus2 = @qs[id] == id ? "focus2" : ""
-											li : span
+											- focus2 = @qs[:wgid] == id.to_s ? "focus2" : ""
+											li
 												a class="#{focus2}" href="#{_url2('/work/task', :wgid => id)}" = L[name]
 
 				#right_body
