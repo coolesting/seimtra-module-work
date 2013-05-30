@@ -1,10 +1,14 @@
 /* 
- * conmon template layout 
+ * template layout 
  * 
  * #wrap
  * -- #header
- * -- -- .top_menu
  * -- #bodyer
+ * -- -- #left_bar
+ * -- -- #right_body
+ * -- -- -- .top_menu
+ * -- -- -- .nav
+ * -- -- -- .body
  * -- #footer
  *
  * */
@@ -17,7 +21,13 @@ body, #wrap {
 	width: 800px;
 }
 
-/* header */
+/* 
+ *
+ * ===============
+ * 		header 
+ * =============== 
+ *
+ */
 #header {
 	height: 58px;
 }
@@ -56,21 +66,22 @@ body, #wrap {
 }
 
 /* 
- * left-right template layout 
- * 
- * #wrap
- * -- #header
- * -- #bodyer
- * -- -- #left_bar
- * -- -- #right_body
- * -- -- -- .top_menu
- * -- -- -- .nav
- * -- -- -- .body
- * -- #footer
  *
- * */
+ * ===============
+ * 	  bodyer 
+ * =============== 
+ *
+ */
+#bodyer { min-height: 600px; }
+#bodyer .button { width: 90px; height: 25px; }
 
-/* left_bar */
+/* 
+ *
+ * ===============
+ * 	   left_bar 
+ * =============== 
+ *
+ */
 #left_bar {
 	width: 100px;
 	float: left;
@@ -101,7 +112,13 @@ body, #wrap {
 #left_bar .body {
 }
 
-/* right_body */
+/* 
+ *
+ * ===============
+ * 	  right_body 
+ * =============== 
+ *
+ */
 #right_body .top_menu {
 	height: 20px;
 }
@@ -147,16 +164,3 @@ body, #wrap {
 #right_body .table th {
 }
 
-/* 
- * top_bottom template layout 
- * 
- * #wrap
- * -- #header
- * -- #bodyer
- * -- -- #main
- * -- #footer
- *
- * */
-
-#bodyer .button { width: 90px; height: 25px; }
-#main { margin-top: 20px; }
