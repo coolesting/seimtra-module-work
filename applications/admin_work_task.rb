@@ -108,6 +108,7 @@ helpers do
 			end
 		end
 
+		@fields[:startime] = Time.new(y,m,d).to_i unless @fields[:startime] == ''	
 	end
 
 	def work_task_valid_fields
