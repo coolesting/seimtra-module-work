@@ -1,6 +1,6 @@
 div
 	p = L[:'merge group']
-	- group_ids = work_group_user
+	- group_ids = work_group_by_user
 	- group_names = _kv(:work_group, :wgid, :name)
 	form action='#{request.path}' method='post'
 		table.table
