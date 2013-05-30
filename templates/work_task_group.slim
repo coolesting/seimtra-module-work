@@ -4,8 +4,11 @@
 		- @task.each do | row |
 			.body
 				ul.task_bar
-					li #{row[:created].strftime("%m-%d, %H:%M")}
-					li #{users[row[:uid]]}
+					li.task_time #{row[:created].strftime("%m-%d, %H:%M")}
+					li.task_info
+						a href="" = users[row[:uid]]
+						label &nbsp;, &nbsp;
+						a href="" = row[:changed_count]
 					li.task_edit
 						div.task_bar_label
 							a href="#{_url2('/work/task/edit', :wtid => row[:wtid])}"

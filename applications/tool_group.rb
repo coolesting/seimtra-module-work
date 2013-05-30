@@ -2,7 +2,7 @@
 #the list of group
 #====================
 get '/work/help/tool/group/list' do
-	@res = work_group_user
+	@res = work_group_by_user
 	_tpl :work_tool_group_list
 end
 

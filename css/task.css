@@ -20,36 +20,33 @@
 	min-height: 200px;
 	border-bottom: 1px solid #595557;
 }
-.task .clear {
-	padding: 1px;
-}
-.task pre {
-	padding: 0;
-	margin: 0;
-}
-.task .task_edit a {
+.task .body .task_bar .task_edit a {
 	text-decoration: none;
 	color: #595557;
 }
-.task .task_bar {
+.task .body .task_bar .task_info a {
+	font-size: 14px;
+	color: #595557;
+}
+.task .body .task_bar {
 	float: right;
 	font-size: 14px;
 	color: #595557;
 }
-.task .task_bar li {
+.task .body .task_bar li {
 	font-size: 14px;
 	color: #595557;
-	padding: 5px;
+	padding: 4px;
 }
 .task .task_bar_label {
 	cursor: pointer;
 }
-.task .task_edit .task_edit_dpmenu {
+.task .body .task_bar .task_edit .task_edit_dpmenu {
 	border: 1px solid #AD7739;
 	position: absolute;
 	background: white;
 	color: black;
 }
-.task .task_edit .task_edit_dpmenu li {
+.task .body .task_bar .task_edit .task_edit_dpmenu li {
 	float: none;
 }

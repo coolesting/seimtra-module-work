@@ -43,8 +43,8 @@ before '/work/help*' do
 end
 
 before '/work/task*' do
-	@task_group = work_group_user
-	@left_menu 	= work_group_by_type
+	@task_group = work_group_by_user
+	@left_menu 	= work_group_with_type
 	#if no group belong to current user, create a default group ?
 
 	#define the data construct
