@@ -18,6 +18,15 @@
 						input type='radio' name='dtype' value="#{i}" id='dtype_radio_#{i}'
 						label for='dtype_radio_#{i}' = plantype[i]
 
+			li : label = L[:'work group']
+			li
+				select name="wgid"
+					- @top_menu2[:g][:wgid].each do | k, v |
+						- if @fields[:wgid].to_i == k or @qs[:wgid].to_i == k
+							option selected="selected" value="#{k}" = v
+						- else
+							option value="#{k}" = v
+
 == _inc(:_editor)
 
 javascript:

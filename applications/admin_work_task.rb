@@ -96,11 +96,13 @@ helpers do
 		default_values = {
 			:uid		=> _user[:uid],
 			:status		=> 0,
-			:wgid		=> 1,
+			:wgid		=> 0,
 			:dtype		=> 0,
 			:startime	=> Time.new(y,m,d).to_i,
 			:content	=> ''
 		}
+
+		@fields[:startime] 	= Time.new(y,m,d).to_i unless @fields[:startime] == ''	
 
 		default_values.each do | k, v |
 			unless @fields.include? k
@@ -108,7 +110,6 @@ helpers do
 			end
 		end
 
-		@fields[:startime] = Time.new(y,m,d).to_i unless @fields[:startime] == ''	
 	end
 
 	def work_task_valid_fields
