@@ -20,6 +20,17 @@
 	min-height: 200px;
 	border-bottom: 1px solid #595557;
 }
+.task .body .task_bar {
+	float: right;
+	font-size: 14px;
+	color: #595557;
+	width: 100px;
+}
+.task .body .task_bar li {
+	font-size: 14px;
+	color: #595557;
+	padding: 4px;
+}
 .task .body .task_bar .task_edit a {
 	text-decoration: none;
 	color: #595557;
@@ -27,16 +38,6 @@
 .task .body .task_bar .task_info a {
 	font-size: 14px;
 	color: #595557;
-}
-.task .body .task_bar {
-	float: right;
-	font-size: 14px;
-	color: #595557;
-}
-.task .body .task_bar li {
-	font-size: 14px;
-	color: #595557;
-	padding: 4px;
 }
 .task .task_bar_label {
 	cursor: pointer;

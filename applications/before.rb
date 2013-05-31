@@ -71,7 +71,9 @@ before '/work/task*' do
 		:w	=> {
 			:w => {},
 		},
-		:g => {},
+		:g => {
+			:wgid => {}
+		},
 	}
 	#year
 	y = Time.now.year
@@ -99,10 +101,10 @@ before '/work/task*' do
 		@top_menu1[:status][i] = status[i]
 	end
 
-# 	groups = _kv(:work_group, :wgid, :name)
-# 	@task_group.each do | i |
-# 		@top_menu2[:g][:wgid][i] = groups[i]
-# 	end
+	groups = _kv(:work_group, :wgid, :name)
+	@task_group.each do | i |
+		@top_menu2[:g][:wgid][i] = groups[i]
+	end
 
 	#set the default value of @qs
 	@qs[:vt] = 'g' unless @qs.include? :vt

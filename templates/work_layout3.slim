@@ -22,20 +22,6 @@ html
 				== _inc(:_message)
 
 			#bodyer
-				#left_bar
-					ul
-						- @left_menu.each do | title, menu |
-							li.title
-								span = L[title]
-							li.body
-								ul
-									- if menu
-										- menu.each do | name, id |
-											- focus2 = @qs[:wgid] == id.to_s ? "focus2" : ""
-											li
-												a class="#{focus2}" href="#{_url2('/work/task', :wgid => id)}" = L[name]
-
-				#right_body
 					.top_menu
 						.left
 							- if request.path == '/work/task/edit'
