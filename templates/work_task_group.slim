@@ -11,7 +11,7 @@
 						a href="" = row[:changed_count]
 					li.task_edit
 						.task_bar_label
-							a href="#{_url2('/work/task/edit', :wtid => row[:wtid])}"
+							a href="#{_url2('/work/task/edit', :wtid => row[:wtid], :wgid => row[:wgid])}"
 								img src="/icons/edit.png"
 						ul.task_edit_dpmenu.hide
 							- status = _vars(:task_status)

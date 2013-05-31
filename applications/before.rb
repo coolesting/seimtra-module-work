@@ -52,7 +52,7 @@ before '/work/task*' do
 		:status => {},
 		:sp => '|',
 		:vt => {
-			:g	=> 'list',
+			:g	=> 'group',
 			:y 	=> 'year',
 			:m	=> 'month',
 			:w	=> 'week',
