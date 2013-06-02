@@ -45,7 +45,7 @@ post '/work/help/tool/group/set_user/:wgid' do
 				_note_send "I have quit the #{group} group yet", _user[:uid], to_uid, 'work_group'
 			end
 		else
-			wgurs = _vars(:work_group_user_rule)
+			wgurs = _vars :group_user_rule, :work
 			params[:wguid].each do | wguid |
 				rule = wgurs.index params[:opt]
 				if rule != nil

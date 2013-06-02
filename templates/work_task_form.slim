@@ -7,7 +7,7 @@
 			li : label = L[:startime]
 			li : input type='text' name='startime' value="#{Time.at(@fields[:startime])}"
 
-			- plantype = _vars(:work_task_datetime_type)
+			- plantype = _vars(:task_datetime_type, :work)
 			li : label = L[:'plan type']
 			li
 				- plantype.each_index do | i |

@@ -116,7 +116,7 @@ helpers do
 		
 		#_throw "The uid field cannot be empty." if @fields[:uid] != 0
 		
-		field = _vars :task_status
+		field = _vars :task_status, :work
 		_throw "The status field isn't existing." if field[@fields[:status].to_i] == nil
 
 		field = _kv :work_group, :wgid, :name

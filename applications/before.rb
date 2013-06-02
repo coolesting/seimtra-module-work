@@ -36,7 +36,7 @@ before '/work/help*' do
 		},
 		:tool => {},
 	}
-	_vars(:work_tool_type).each do | a |
+	_vars(:tool_type, :work).each do | a |
 		@left_menu[:tool][a.to_sym] = '/work/help/tool/' + a
 	end
 
@@ -96,7 +96,7 @@ before '/work/task*' do
 		@top_menu2[:w][:w][i] = i
 	end
 
-	status = _vars(:task_status)
+	status = _vars :task_status, :work
 	status.each_index do | i |
 		@top_menu1[:status][i] = status[i]
 	end

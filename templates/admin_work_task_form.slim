@@ -5,7 +5,7 @@ form action="#{request.path}" method="post" id="form"
 		li : input type="text" name="uid" required="required" value="#{@fields[:uid]}"
 		
 		li : label = L[:status]
-		- status = _vars(:task_status)
+		- status = _vars(:task_status, :work)
 		li : select name="status" required="required"
 			- status.each_index do | i |
 				- selected = @fields[:status] == i ? "selected" : ""

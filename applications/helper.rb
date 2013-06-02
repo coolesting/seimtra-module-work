@@ -14,8 +14,8 @@ helpers do
 	#return a hash
 	def work_group_with_type
 		res = {}
-		work_groups = _kv(:work_group, :wgid, :wgtid)
-		work_group_names = _kv(:work_group, :wgid, :name)
+		work_groups = _kv :work_group, :wgid, :wgtid
+		work_group_names = _kv :work_group, :wgid, :name
 		work_group_types = _kv :work_group_type, :wgtid, :name
 		user_group = work_group_by_user
 

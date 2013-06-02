@@ -1,20 +1,32 @@
-skey=task_status
-sval=active,closed,cancel
-tag=task
-
-skey=work_tool_type
+skey=tool_type
 sval=group,user
 tag=work
 
-skey=work_group_user_rule
+skey=group_user_rule
 sval=unvalid,common,admin
 tag=work
 
-skey=work_website_title
+skey=website_title
 sval=c l o w k
 tag=work
 
-skey=work_task_datetime_type
+skey=website_keyword
+sval=cloud workstation
+tag=work
+
+skey=website_description
+sval=a network station
+tag=work
+
+skey=website_logon
+sval=logo
+tag=work
+
+skey=task_datetime_type
 sval=day,week,month,year,hour
+tag=work
+
+skey=task_status
+sval=active,closed,cancel
 tag=work
 
