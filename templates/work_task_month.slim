@@ -1,14 +1,35 @@
 .task_month
-	- @res.each do | k, v |
-		- focus = v == Time.now.day.to_s ? 'focus5' : ''
-		.day class="#{focus}"
-			a href="#{_url2('/work/task/edit', :d => v, :dtype => 1)}" #{v}
+	table
+		- @res.each do | k, v |
+			- focus = v == @qs[:w].to_s ? 'focus5' : ''
+			tr
+				td.title class="#{focus}"
+					a href="" #{L[:week]} #{v} 
+				td.body class="#{focus}"
+
 css:
-	.task_month .day {
-		float:left;
+	.task_month table {
+		width: 100%;
+	}
+	.task_month tr {
+	}
+	.task_month td {
 		padding: 5px;
 		margin: 3px;
-		height: 80px;
-		width: 12%;
+		height: 90px;
 		border: 1px solid #816F53;
+	}
+	.task_month .title {
+		width: 3%;
+	}
+	.task_month .body {
+		width: 100%;
+	}
+	.task_month a {
+		color: black;
+		text-decoration: none;
+	}
+	.task_month a:hover {
+		color: black;
+		text-decoration: underline;
 	}

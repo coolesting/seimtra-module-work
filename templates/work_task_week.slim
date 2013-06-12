@@ -1,18 +1,23 @@
 .task_week
 	- @res.each do | k, v |
+		- focus = v == Time.now.day.to_s ? 'focus5' : ''
 		.week
-			.title
-			.day day
-			.day night
+			.title = L[v]
+			.day
+			.day
 
 css:
 	.task_week .week {
 		float:left;
+		width: 14.3%;
+	}
+	.task_week .week .title, .day {
 		padding: 5px;
 		margin: 3px;
-		width: 12%;
 		border: 1px solid #816F53;
 	}
+	.task_week .week .title {
+	}
 	.task_week .week .day {
-		height: 140px;
+		height: 180px;
 	}

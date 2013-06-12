@@ -23,31 +23,22 @@ html
 
 			#bodyer
 					.top_menu
-						.left
-							- if request.path == '/work/task/edit'
-								input.button type="submit" value="#{L[:done]}" form="task_edit_form"
-								a href="#{_url2('/work/task')}"
-									input.button type="button" value="#{L[:return]}"
-							- else
-								a href="#{_url2('/work/task/edit')}"
-									input.button type="button" value="#{L[:create]}"
-
 						ul.right
 							- unless @top_menu1.empty?
+								- ic = @top_menu1.count
+								- i = 1
 								- @top_menu1.each do | key, val |
-									- if key == :sp
+									- val.each do | k, v |
+										li
+											- focus2 = @qs[key] == k.to_s ? "focus2" : ""
+											a class="#{focus2}" href="#{_url2(request.path, key => k.to_s)}" = v
+									- if i != ic
 										li |
-									- else
-										- val.each do | k, v |
-											li
-												- focus2 = @qs[key] == k.to_s ? "focus2" : ""
-												a class="#{focus2}" href="#{_url2(request.path, key => k.to_s)}" = v
+									- i = i + 1
 
-					.clear
-
-					.top_menu.right
+					.top_menu
 						- unless @top_menu2[@qs[:vt].to_sym].empty?
-							ul
+							ul.right
 								- @top_menu2[@qs[:vt].to_sym].each do | key, val |
 									- if key == :sp
 										li |
@@ -57,7 +48,17 @@ html
 												- focus2 = @qs[key] == k.to_s ? "focus2" : ""
 												a class="#{focus2}" href="#{_url2(request.path, key.to_sym => k.to_s)}" = v
 
-					.clear
+
+						.left
+							- if request.path == '/work/task/edit'
+								input.button type="submit" value="#{L[:done]}" form="task_edit_form"
+								a href="#{_url2('/work/task')}"
+									input.button type="button" value="#{L[:return]}"
+							- else
+								a href="#{_url2('/work/task/edit')}"
+									input.button type="button" value="#{L[:create]}"
+
+					.clear	
 
 					#main == yield
 

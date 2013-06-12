@@ -1,31 +1,41 @@
 .work_form
 	form action="#{_url2('/work/task/edit')}" method="post" id="task_edit_form"
-		ul
-			li : textarea.width99.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
+		textarea.width99.linyu_textarea name="content" rows="14" cols="60" required="required" = @fields[:content]
 
-		ul.more_detail
-			li : label = L[:startime]
-			li : input type='text' name='startime' value="#{Time.at(@fields[:startime])}"
+		table.more_detail
+			tr
+				td
+					p = L[:startime]
+				td
+					p = L[:'plan type']
+				td
+					p = L[:'work group']
+			tr
+				td
+					p : input type='text' name='startime' value="#{Time.at(@fields[:startime])}"
 
-			- plantype = _vars(:task_datetime_type, :work)
-			li : label = L[:'plan type']
-			li
-				- plantype.each_index do | i |
-					- if @fields[:dtype] == i
-						input type='radio' checked='checked' name='dtype' value="#{i}" id='dtype_radio_#{i}'
-						label for='dtype_radio_#{i}' = plantype[i]
-					- else
-						input type='radio' name='dtype' value="#{i}" id='dtype_radio_#{i}'
-						label for='dtype_radio_#{i}' = plantype[i]
+				- plantype = _vars(:task_datetime_type, :work)
+				td
+					p : ul
+						- plantype.each_index do | i |
+							li
+								- if @fields[:dtype] == i
+									input type='radio' checked='checked' name='dtype' value="#{i}" id='dtype_radio_#{i}'
+									label for='dtype_radio_#{i}' = plantype[i]
+								- else
+									input type='radio' name='dtype' value="#{i}" id='dtype_radio_#{i}'
+									label for='dtype_radio_#{i}' = plantype[i]
 
-			li : label = L[:'work group']
-			li
-				select name="wgid"
-					- @top_menu2[:g][:wgid].each do | k, v |
-						- if @fields[:wgid].to_i == k or @qs[:wgid].to_i == k
-							option selected="selected" value="#{k}" = v
-						- else
-							option value="#{k}" = v
+				td
+					p : ul
+						- @top_menu1[:wgid].each do | k, v |
+							li
+								- if @fields[:wgid].to_i == k or @qs[:wgid].to_i == k
+									input type='radio' checked='checked' name='wgid' value="#{k}" id='wgid_radio_#{k}'
+									label for='wgid_radio_#{k}' = v
+								- else
+									input type='radio' name='wgid' value="#{k}" id='wgid_radio_#{k}'
+									label for='wgid_radio_#{k}' = v
 
 == _inc(:_editor)
 
@@ -53,6 +63,7 @@ javascript:
 
 
 css:
-	.work_form li { padding-bottom: 5px; }
+	.work_form td { padding: 5px; width: 300px; }
+	.work_form td li { padding-bottom: 3px; }
 	.work_form textarea { background: #F2DBBF; }
 
