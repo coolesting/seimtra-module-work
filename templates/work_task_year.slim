@@ -2,6 +2,7 @@
 	- @res.each do | k, v |
 		- focus = v == Time.now.mon.to_s ? 'focus5' : ''
 		.month class="#{focus}"
+<<<<<<< .merge_file_df8HK8
 			- if @tasks[k].empty?
 				label
 					a href="#{_url('/work/task/edit', :m => v, :dtype => 3, :vt => 'y')}" #{v} #{L[:month]}
@@ -10,6 +11,10 @@
 					a href="#{_url2('/work/task/edit', :m => v, :wtid => @tasks[k][:wtid])}" #{v} #{L[:month]}
 				p
 					= @tasks[k][:content]
+=======
+			label
+				a href="" #{v} #{L[:month]}
+>>>>>>> .merge_file_BabvA5
 
 css:
 	.task_year .month {
