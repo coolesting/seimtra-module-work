@@ -19,11 +19,7 @@
 					p : ul
 						- plantype.each_index do | i |
 							li
-<<<<<<< .merge_file_afDPC3
 								- if @fields[:dtype].to_i == i
-=======
-								- if @fields[:dtype] == i
->>>>>>> .merge_file_oBOZW0
 									input type='radio' checked='checked' name='dtype' value="#{i}" id='dtype_radio_#{i}'
 									label for='dtype_radio_#{i}' = plantype[i]
 								- else
