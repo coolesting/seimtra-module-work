@@ -7,14 +7,16 @@ get '/work/task' do
 		require 'week_of_month'
 		@qs[:w] = Time.now.week_of_month
 	end
-	if @qs[:vt] == 'g'
-		work_task_view_group
+	if @qs[:vt] == 'l'
+		work_task_view_list
 	elsif @qs[:vt] == 'y'
 		work_task_view_year
 	elsif @qs[:vt] == 'm'
 		work_task_view_month
 	elsif @qs[:vt] == 'w'
 		work_task_view_week
+	elsif @qs[:vt] == 'd'
+		work_task_view_day
 	end
 end
 
@@ -22,10 +24,17 @@ helpers do
 
 	#year form
 	def work_task_view_year
-		@res = {}
+		@res 	= {}
+		@tasks 	= {}
 		12.times do | i |
 			i = i + 1
-			@res[i] = i.to_s
+			@res[i] 	= i.to_s
+			@tasks[i] 	= {}
+		end
+
+		DB[:work_task].filter(:dtype => 3, :uid => _user[:uid]).each do | row |
+			m = Time.at(row[:startime]).mon
+			@tasks[m] = row
 		end
 
 		_tpl :work_task_year, :work_layout3
@@ -33,6 +42,17 @@ helpers do
 
 	#month form
 	def work_task_view_month
+		@res = {}
+		6.times do | i |
+			i = i + 1
+			@res[i] = i.to_s
+		end
+
+		_tpl :work_task_month, :work_layout3
+	end
+
+	#day form
+	def work_task_view_day
 		newtime = Time.new(@qs[:y].to_i,@qs[:m].to_i,1)
 		wday = newtime.wday - 1
 		mday = newtime.mday
@@ -41,7 +61,7 @@ helpers do
 		days = Date.new(@qs[:y].to_i,@qs[:m].to_i,-1).day + wday + 1
 
 		@res = {}
-		35.times do | i |
+		42.times do | i |
 			if i > wday and i < days
 				day = i - wday
 				@res[i] = day.to_s
@@ -50,28 +70,32 @@ helpers do
 			end
 		end
 
-		_tpl :work_task_month, :work_layout3
+		_tpl :work_task_day, :work_layout3
 	end
 
 	#week form
 	def  work_task_view_week
-		@res = {}
-		7.times do | i |
-			i = i + 1
-			@res[i] = i
-		end
+		@res = {
+			7	=> :Sun,
+			1	=> :Mon,
+			2 	=> :Tue,
+			3	=> :Wed,
+			4	=> :Thu,
+			5	=> :Fri,
+			6	=> :Sat,
+		}
 
 		_tpl :work_task_week, :work_layout3
 	end
 
-	#group form
-	def work_task_view_group
+	#list form
+	def work_task_view_list
 		condition = {}
 
 		#status
 		condition[:status] = @qs.include?(:status) ? @qs[:status].to_i : 0
 
-		#group
+		#work group
 		if @qs.include?(:wgid) and @qs[:wgid].to_i > 0
 			condition[:wgid] = @qs[:wgid] 
 		else
@@ -80,7 +104,7 @@ helpers do
 
 		@task = DB[:work_task].filter(condition).reverse_order(:changed)
 		_parser_init :no_intra_emphasis => true
-		_tpl :work_task_group, :work_layout3
+		_tpl :work_task_list, :work_layout3
 	end
 
 	def work_get_task_by_user uid = 0

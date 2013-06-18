@@ -1,6 +1,6 @@
 
 get '/work/task/edit' do
-	@fields = DB[:work_task].filter(:wtid => params[:wtid]).all[0] if @qs.include? :wtid
+	@fields = DB[:work_task].filter(:wtid => params[:wtid]).first if @qs.include? :wtid
 	work_task_set_fields
 	_tpl :work_task_form, :work_layout3
 end

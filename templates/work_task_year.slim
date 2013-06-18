@@ -2,14 +2,29 @@
 	- @res.each do | k, v |
 		- focus = v == Time.now.mon.to_s ? 'focus5' : ''
 		.month class="#{focus}"
-			a href="" = v
+			- if @tasks[k].empty?
+				label
+					a href="#{_url('/work/task/edit', :m => v, :dtype => 3, :vt => 'y')}" #{v} #{L[:month]}
+			- else
+				label
+					a href="#{_url2('/work/task/edit', :m => v, :wtid => @tasks[k][:wtid])}" #{v} #{L[:month]}
+				p
+					= @tasks[k][:content]
 
 css:
 	.task_year .month {
-		float:left;
+		float: left;
 		padding: 5px;
 		margin: 3px;
 		height: 90px;
 		width: 31%;
 		border: 1px solid #816F53;
+	}
+	.task_year .month a {
+		color: black;
+		text-decoration: none;
+	}
+	.task_year .month a:hover {
+		color: black;
+		text-decoration: underline;
 	}

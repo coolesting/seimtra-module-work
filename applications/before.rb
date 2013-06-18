@@ -1,6 +1,6 @@
 
 configure do
-	set :home_page, '/work/home'
+	set :home_page, '/work/task'
 end
 
 before '/work/*' do
@@ -28,12 +28,12 @@ before '/work/help*' do
 			:report		=> '/work/help/docs/post/2',
 			:decision	=> '/work/help/docs/post/3',
 		},
-		:base => {
-			#:info	=> '/work/home/settings/info',
-			#:contact=> '/work/home/settings/contact',
-			#:secure	=> '/work/home/settings/secure',
-			:messages => '/work/help/message/group',
-		},
+# 		:base => {
+# 			:info	=> '/work/home/settings/info',
+# 			:contact=> '/work/home/settings/contact',
+# 			:secure	=> '/work/home/settings/secure',
+# 			:messages => '/work/help/message/group',
+# 		},
 		:tool => {},
 	}
 	_vars(:tool_type, :work).each do | a |
@@ -49,13 +49,14 @@ before '/work/task*' do
 
 	#define the data construct
 	@top_menu1 = {
+		:wgid	=> {},
 		:status => {},
-		:sp => '|',
-		:vt => {
-			:g	=> 'group',
+		:vt 	=> {
 			:y 	=> 'year',
 			:m	=> 'month',
 			:w	=> 'week',
+			:d	=> 'day',
+			:l	=> 'list',
 		},
 	}
 
@@ -64,6 +65,9 @@ before '/work/task*' do
 			:y => {}
 		},
 		:m	=> {
+			:m => {}
+		},
+		:d	=> {
 			:m => {},
 			:sp => '|',
 			:y => {},
@@ -71,8 +75,8 @@ before '/work/task*' do
 		:w	=> {
 			:w => {},
 		},
-		:g => {
-			:wgid => {}
+		:l	=> {
+			:l => {},
 		},
 	}
 	#year
@@ -81,19 +85,21 @@ before '/work/task*' do
 		@top_menu2[:y][:y][i] = i
 	end
 
-	#month
+	#week
+	6.times do | i |
+		i = i + 1
+		@top_menu2[:w][:w][i] = i
+	end
+
+	#day
 	12.times do | i |
 		i = i + 1
+		@top_menu2[:d][:m][i] = i
+		#month
 		@top_menu2[:m][:m][i] = i
 	end
 	[y, y + 1].each do | i |
-		@top_menu2[:m][:y][i] = i
-	end
-
-	#week
-	5.times do | i |
-		i = i + 1
-		@top_menu2[:w][:w][i] = i
+		@top_menu2[:d][:y][i] = i
 	end
 
 	status = _vars :task_status, :work
@@ -103,11 +109,11 @@ before '/work/task*' do
 
 	groups = _kv(:work_group, :wgid, :name)
 	@task_group.each do | i |
-		@top_menu2[:g][:wgid][i] = groups[i]
+		@top_menu1[:wgid][i] = groups[i]
 	end
 
 	#set the default value of @qs
-	@qs[:vt] = 'g' unless @qs.include? :vt
+	@qs[:vt] = 'l' unless @qs.include? :vt
 	@qs[:status] = 0 unless @qs.include? :status
 
 end

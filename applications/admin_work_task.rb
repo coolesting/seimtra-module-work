@@ -96,7 +96,7 @@ helpers do
 		default_values = {
 			:uid		=> _user[:uid],
 			:status		=> 0,
-			:wgid		=> 0,
+			:wgid		=> 1,
 			:dtype		=> 0,
 			:startime	=> Time.new(y,m,d).to_i,
 			:content	=> ''
@@ -106,6 +106,7 @@ helpers do
 
 		default_values.each do | k, v |
 			unless @fields.include? k
+				@fields[k] = @qs.include?(k) ? @qs[k] : v
 				@fields[k] = params[k] ? params[k] : v
 			end
 		end

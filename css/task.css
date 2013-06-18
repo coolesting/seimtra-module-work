@@ -1,6 +1,6 @@
 #bodyer .top_menu {
-	margin: 0;
-	padding: 0;
+	margin-bottom: 5px;
+	height: 25px;
 }
 #bodyer .top_menu li {
 	float:left;
@@ -16,9 +16,10 @@
 }
 
 .task .body { 
-	margin-bottom: 20px;
+	margin-bottom: 8px;
 	min-height: 200px;
-	border-bottom: 1px solid #595557;
+	padding: 10px;
+	border: 1px solid #595557;
 }
 .task .body .task_bar {
 	float: right;
